@@ -14,7 +14,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="pt-24">
+    <div className="pt-24 mb-4">
       {/* Hero Section */}
       <div
         className="relative h-64 md:h-80 bg-cover bg-center flex items-center justify-center"
