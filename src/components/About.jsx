@@ -1,8 +1,47 @@
-import React from "react";
+import { useState } from "react";
 import AboutImg from "../assets/AboutImg.png";
 import HeroSectionImg from "../assets/HeroSectionImg.png";
 
+const AccordionItem = ({ title, content, isOpen, onClick }) => {
+  return (
+    <div className="border-b ">
+      <button
+        className="w-full text-left py-4 text-lg font-medium text-pink-600 flex justify-between items-center"
+        onClick={onClick}
+      >
+        {title}
+        <span>{isOpen ? "-" : "+"}</span>
+      </button>
+      {isOpen && <p className="pb-4 text-gray-700">{content}</p>}
+    </div>
+  );
+};
+
 const About = () => {
+  const [openIndex, setopenIndex] = useState(null);
+
+  const toggleAccordian = (index) => {
+    setopenIndex(openIndex === index ? null : index);
+  };
+
+  const sampleData = [
+    {
+      title: "Who are we?",
+      content:
+        "We are a passionate team of food enthusiasts committed to sharing delicious and easy-to-follow recipes for all occasions.",
+    },
+    {
+      title: "What do we offer?",
+      content:
+        "From traditional dishes to modern cuisine, our platform offers a wide range of recipes that suit every palate and skill level.",
+    },
+    {
+      title: "Why choose us?",
+      content:
+        "We ensure our recipes are tested, easy to understand, and provide nutritional information so you can cook with confidence.",
+    },
+  ];
+
   return (
     <div className="pt-24">
       {/* Hero Section */}
@@ -49,6 +88,19 @@ const About = () => {
             something amazing together! 🍽️
           </p>
         </div>
+      </div>
+
+      {/* Accordion Section  */}
+      <div className="max-w-4xl mx-auto p-6">
+        {sampleData.map((item, index) => (
+          <AccordionItem
+            key={index}
+            title={item.title}
+            content={item.content}
+            isOpen={openIndex === index}
+            onClick={() => toggleAccordian(index)}
+          />
+        ))}
       </div>
     </div>
   );

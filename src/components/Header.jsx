@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { CgShoppingCart } from "react-icons/cg";
 import { CgMenuCake } from "react-icons/cg";
 import { RiCloseLargeLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
